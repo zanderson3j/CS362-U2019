@@ -1281,8 +1281,6 @@ int mineEffect(int currentPlayer, int choice1, int choice2, struct gameState *st
   }
 
   gainCard(choice2, state, 2, currentPlayer);
-
-  if (choice1 == state->handCount[currentPlayer] - 1) choice1 = handPos;  //discard card replaces discraded card with last card in the deck
   discardCard(handPos, currentPlayer, state, 0);  //discard card from hand
   discardCard(choice1, currentPlayer, state, 0);  //discard trashed card
 
