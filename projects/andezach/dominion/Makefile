@@ -35,65 +35,85 @@ player: player.c interface.o
 
 unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c cardtest5.c dominion.o rngs.o
 
-	echo "Result for running Baron tests:" > unittestresults.out
-	echo "unittest1.c:" >> unittestresults.out
+	echo "Result for running Baron tests (unittest1.c):" > unittestresults.out
+	echo >> unittestresults.out
 	gcc -o unittest1 unittest1.c dominion.o rngs.o $(CFLAGS)
 	./unittest1 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov unittest1.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running Minion tests:" >> unittestresults.out
-	echo "unittest2.c:" >> unittestresults.out
+	echo "Result for running Minion tests (unittest2.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o unittest2 unittest2.c dominion.o rngs.o $(CFLAGS)
 	./unittest2 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov unittest2.c >> unittestresults.out
+	echo >> unittestresults.out
 
-		echo "Result for running Ambassador tests:" >> unittestresults.out
-	echo "unittest3.c:" >> unittestresults.out
+	echo "Result for running Ambassador tests (unittest3.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o unittest3 unittest3.c dominion.o rngs.o $(CFLAGS)
 	./unittest3 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov unittest3.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running Tribute tests:" >> unittestresults.out
-	echo "unittest4.c:" >> unittestresults.out
+	echo "Result for running Tribute tests (unittest4.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o unittest4 unittest4.c dominion.o rngs.o $(CFLAGS)
 	./unittest4 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov unittest4.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running Mine tests:" >> unittestresults.out
-	echo "unittest5.c:" >> unittestresults.out
+	echo "Result for running Mine tests (unittest5.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o unittest5 unittest5.c dominion.o rngs.o $(CFLAGS)
 	./unittest5 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov unittest5.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running initializeGame tests:" >> unittestresults.out
-	echo "cardtest1.c:" >> unittestresults.out
+	echo "Result for running initializeGame tests (cardtest1.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o cardtest1 cardtest1.c dominion.o rngs.o $(CFLAGS)
 	./cardtest1 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov cardtest1.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running shuffle tests:" >> unittestresults.out
-	echo "cardtest2.c:" >> unittestresults.out
+	echo "Result for running shuffle tests (cardtest2.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o cardtest2 cardtest2.c dominion.o rngs.o $(CFLAGS)
 	./cardtest2 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov cardtest2.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running endTurn tests:" >> unittestresults.out
-	echo "cardtest3.c:" >> unittestresults.out
+	echo "Result for running endTurn tests (cardtest3.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o cardtest3 cardtest3.c dominion.o rngs.o $(CFLAGS)
 	./cardtest3 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov cardtest3.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running getWinners tests:" >> unittestresults.out
-	echo "cardtest4.c:" >> unittestresults.out
+	echo "Result for running getWinners tests (cardtest4.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o cardtest4 cardtest4.c dominion.o rngs.o $(CFLAGS)
 	./cardtest4 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov cardtest4.c >> unittestresults.out
+	echo >> unittestresults.out
 
-	echo "Result for running drawCard tests:" >> unittestresults.out
-	echo "cardtest5.c:" >> unittestresults.out
+	echo "Result for running drawCard tests (cardtest5.c):" >> unittestresults.out
+	echo >> unittestresults.out
 	gcc -o cardtest5 cardtest5.c dominion.o rngs.o $(CFLAGS)
 	./cardtest5 >> unittestresults.out
+	echo >> unittestresults.out
 	gcov cardtest5.c >> unittestresults.out
+	echo >> unittestresults.out
 
 all: playdom player
 

@@ -1282,7 +1282,7 @@ void drawCards(int numCards, int player, struct gameState *state) {
 
 
 void gainEstate(int currentPlayer, struct gameState *state) {
-  gainCard(estate, state, 0, currentPlayer);  //Gain an estate
+  gainCard(estate, state, 2, currentPlayer);  //Gain an estate
   state->supplyCount[estate]--;  //Decrement Estates
   if (supplyCount(estate, state) == 0) {
     isGameOver(state);
