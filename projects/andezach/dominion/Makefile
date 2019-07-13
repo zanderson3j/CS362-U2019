@@ -80,7 +80,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 	gcc -o cardtest1 cardtest1.c dominion.o rngs.o $(CFLAGS)
 	./cardtest1 >> unittestresults.out
 	echo >> unittestresults.out
-	gcov cardtest1.c >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 initializeGame >> unittestresults.out
 	echo >> unittestresults.out
 
 	echo "Result for running shuffle tests (cardtest2.c):" >> unittestresults.out
@@ -88,7 +88,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 	gcc -o cardtest2 cardtest2.c dominion.o rngs.o $(CFLAGS)
 	./cardtest2 >> unittestresults.out
 	echo >> unittestresults.out
-	gcov cardtest2.c >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 shuffle >> unittestresults.out
 	echo >> unittestresults.out
 
 	echo "Result for running endTurn tests (cardtest3.c):" >> unittestresults.out
@@ -96,7 +96,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 	gcc -o cardtest3 cardtest3.c dominion.o rngs.o $(CFLAGS)
 	./cardtest3 >> unittestresults.out
 	echo >> unittestresults.out
-	gcov cardtest3.c >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 endTurn >> unittestresults.out
 	echo >> unittestresults.out
 
 	echo "Result for running getWinners tests (cardtest4.c):" >> unittestresults.out
@@ -104,7 +104,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 	gcc -o cardtest4 cardtest4.c dominion.o rngs.o $(CFLAGS)
 	./cardtest4 >> unittestresults.out
 	echo >> unittestresults.out
-	gcov cardtest4.c >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 getWinners >> unittestresults.out
 	echo >> unittestresults.out
 
 	echo "Result for running drawCard tests (cardtest5.c):" >> unittestresults.out
@@ -112,7 +112,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 	gcc -o cardtest5 cardtest5.c dominion.o rngs.o $(CFLAGS)
 	./cardtest5 >> unittestresults.out
 	echo >> unittestresults.out
-	gcov cardtest5.c >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 drawCard >> unittestresults.out
 	echo >> unittestresults.out
 
 all: playdom player
