@@ -112,7 +112,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 	gcc -o cardtest5 cardtest5.c dominion.o rngs.o $(CFLAGS)
 	./cardtest5 >> unittestresults.out
 	echo >> unittestresults.out
-	gcov dominion.c -b -f | grep -A 5 drawCard >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 "Function 'drawCard'" >> unittestresults.out
 	echo >> unittestresults.out
 
 all: playdom player
