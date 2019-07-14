@@ -31,7 +31,7 @@ int main() {
   tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
   printf("expected actions: %i, actual: %i\n", before.numActions + 2, after.numActions);
 
-  printf("Treasue Card Adds 2 Coins to Player: ");
+  printf("Treasure Card Adds 2 Coins to Player: ");
   printf("expected coins: %i, actual: %i\n", before.coins + 2, after.coins);
 
   printf("Victory Card Adds 2 Cards to Player's Hand: ");

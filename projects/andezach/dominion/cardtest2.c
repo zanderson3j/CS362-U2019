@@ -33,7 +33,7 @@ int main() {
   printf("Same Deck Count After Shuffle: ");
   printf("expected deck count: %i, actual: %i\n", before.deckCount[nextPlayer], after.deckCount[nextPlayer]);
 
-  printf("Empty Deck Can't be Shuffled:\n");
+  printf("Empty Deck Can't be Shuffled: ");
   memset(&before, 23, sizeof(struct gameState));
   initializeGame(numPlayer, k, seed, &before);
   before.deckCount[nextPlayer] = 0;
