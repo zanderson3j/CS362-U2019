@@ -13,6 +13,8 @@ int main() {
   int k[10] = {adventurer, minion, ambassador, tribute, mine, remodel, smithy, village, baron, great_hall};
   struct gameState before, after;
 
+  int result;
+
   //Test for choice of 2 coins.
   printf("Get 2 Coins: ");
   memset(&before, 23, sizeof(struct gameState));
@@ -56,5 +58,16 @@ int main() {
   choice2 = 1;
   minionEffect(currentPlayer, choice1, choice2, &after, 0);
   printf("expected hand count: 4, actual: %i\n", after.handCount[currentPlayer + 1]);
+
+  //Test making two choices is illegal
+  printf("Making two choices is illegal: ");
+  memset(&before, 23, sizeof(struct gameState));
+  initializeGame(numPlayer, k, seed, &before);
+  before.hand[currentPlayer][0] = minion; //put minion card in hand
+  memcpy(&after, &before, sizeof(struct gameState));
+  choice1 = 1;
+  choice2 = 1;
+  result = minionEffect(currentPlayer, choice1, choice2, &after, 0);
+  printf("expected result: -1, actual: %i\n", result);
 
 }
