@@ -41,7 +41,7 @@ int main() {
   printf("baron: 8, %i\n", state.supplyCount[baron]);
   printf("great_hall: 8, %i\n", state.supplyCount[great_hall]);
 
-  printf("Unchosen Kingdom Card not in Deck: ");
+  printf("Unchosen Kingdom Card not in Supply: ");
   printf("feast: -1, %i\n", state.supplyCount[feast]);
 
   printf("Both Players Have Deck: ");
