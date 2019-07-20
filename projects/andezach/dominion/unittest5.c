@@ -23,7 +23,9 @@ int main() {
   choice2 = 1;
   handPos = 0;
   mineEffect(currentPlayer, choice1, choice2, &after, handPos);
-  printf("expected card in back of hand: %i, actual: %i\n", silver, after.hand[currentPlayer][after.handCount[currentPlayer] - 1]);
+  printf("expected card in back of hand: %i, actual: %i\n",
+    silver,
+    after.hand[currentPlayer][after.handCount[currentPlayer] - 1]);
 
   printf("Trade Copper for Gold: ");
   memset(&before, 23, sizeof(struct gameState));

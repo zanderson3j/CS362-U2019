@@ -45,10 +45,14 @@ int main() {
   printf("feast: -1, %i\n", state.supplyCount[feast]);
 
   printf("Both Players Have Deck: ");
-  printf("expected deck count p1 and p2: 5 and 10, %i and %i\n", state.deckCount[0], state.deckCount[1]);
+  printf("expected deck count p1 and p2: 5 and 10, %i and %i\n",
+    state.deckCount[0],
+    state.deckCount[1]);
 
   printf("First Player has 5 Cards in Hand, Other Player has 0: ");
-  printf("expected deck count for p1 and p2: 5 and 0, actual: %i and %i\n", state.handCount[0], state.handCount[1]);
+  printf("expected deck count for p1 and p2: 5 and 0, actual: %i and %i\n",
+    state.handCount[0],
+    state.handCount[1]);
 
   printf("Number of Players is 3: ");
   numPlayer = 3;
@@ -77,7 +81,7 @@ int main() {
   printf("great_hall: 12, %i\n", state.supplyCount[great_hall]);
 
   printf("Duplicate Kingdom Card Request is Illegal: ");
-  k[0] = tribute;
+  k[0] = tribute; //Puts multiple tributes in the kingdom card selections
   memset(&state, 23, sizeof(struct gameState));
   result = initializeGame(numPlayer, k, seed, &state);
   printf("expected result: -1, actual: %i\n", result);

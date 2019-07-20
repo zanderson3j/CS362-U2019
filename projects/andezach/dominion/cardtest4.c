@@ -27,13 +27,17 @@ int main() {
   state.hand[p1][0] = province;
   state.hand[p2][0] = estate;
   getWinners(players, &state);
-  printf("expected winner loser: p1 - 1, p2 - 0, actual: p1 - %i, p2 - %i\n", players[0], players[1]);
+  printf("expected winner loser: p1 - 1, p2 - 0, actual: p1 - %i, p2 - %i\n",
+    players[0],
+    players[1]);
 
   printf("Player Gets Extra Points for Less Turns: ");
   state.hand[p1][0] = province;
   state.hand[p2][0] = province;
   getWinners(players, &state);
-  printf("expected winner loser: p1 - 0, p2 - 1, actual: p1 - %i, p2 - %i\n", players[0], players[1]);
+  printf("expected winner loser: p1 - 0, p2 - 1, actual: p1 - %i, p2 - %i\n",
+    players[0],
+    players[1]);
 
   printf("Tie Means Both Players Win: ");
   endTurn(&state);
@@ -46,5 +50,7 @@ int main() {
   state.hand[p1][0] = province;
   state.hand[p2][0] = province;
   getWinners(players, &state);
-  printf("expected winner loser: p1 - 1, p2 - 1, actual: p1 - %i, p2 - %i\n", players[0], players[1]);
+  printf("expected winner loser: p1 - 1, p2 - 1, actual: p1 - %i, p2 - %i\n",
+    players[0],
+    players[1]);
 }

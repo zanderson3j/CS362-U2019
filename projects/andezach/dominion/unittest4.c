@@ -20,7 +20,10 @@ int main() {
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 3] = estate;
   memcpy(&after, &before, sizeof(struct gameState));
   tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
-  printf("expected handCount and top card: %i:%i, actual: %i:%i\n", before.deckCount[nextPlayer] - 2, estate, after.deckCount[nextPlayer], after.deck[nextPlayer][after.deckCount[nextPlayer] - 1]);
+  printf("expected handCount and top card: %i:%i, actual: %i:%i\n",
+    before.deckCount[nextPlayer] - 2,
+    estate, after.deckCount[nextPlayer],
+    after.deck[nextPlayer][after.deckCount[nextPlayer] - 1]);
 
   printf("Action Card Adds 2 Actions to Turn: ");
   memset(&before, 23, sizeof(struct gameState));
@@ -41,7 +44,9 @@ int main() {
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 2] = copper;
   memcpy(&after, &before, sizeof(struct gameState));
   tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
-  printf("expected handCount: %i, actual: %i\n", before.handCount[currentPlayer] + 2, after.handCount[currentPlayer]);
+  printf("expected handCount: %i, actual: %i\n",
+    before.handCount[currentPlayer] + 2,
+    after.handCount[currentPlayer]);
 
   printf("Duplicate Cards Have One Reward: ");
   memset(&before, 23, sizeof(struct gameState));

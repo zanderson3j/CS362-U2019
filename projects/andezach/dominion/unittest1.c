@@ -22,14 +22,10 @@ int main() {
   choice1 = 1;
   baronEffect(currentPlayer, choice1, &after);
   printf("expected coins: %i, actual: %i\n", before.coins + 4, after.coins);
-  // if(before.coins + 4 == after.coins) printf("PASS\n");
-  // else printf("FAIL\n");
 
   //Test the number of buys increases by one.
   printf("Increase Card Buys by One: ");
   printf("expected numBuys: %i, actual: %i\n", before.numBuys + 1, after.numBuys);
-  // if(before.numBuys + 1 == after.numBuys) printf("PASS\n");
-  // else printf("FAIL\n");
 
   //Test not discarding an estate card results in picking one up.
   printf("Pick Up An Estate: ");
@@ -39,8 +35,6 @@ int main() {
   choice1 = 0;
   baronEffect(currentPlayer, choice1, &after);
   printf("expected handCount and last card: %i:%i, actual: %i:%i\n", before.handCount[0] + 1, estate, after.handCount[0], after.hand[0][after.handCount[0] - 1]);
-  // if(before.handCount[0] + 1 == after.handCount[0] && estate == after.hand[0][after.handCount[0] - 1]) printf("PASS\n");
-  // else printf("FAIL\n");
 
   //Test not having an estate to discard results in picking one up.
   printf("Pick Up an Estate if None to Discard: ");
@@ -53,11 +47,7 @@ int main() {
   choice1 = 1;
   baronEffect(currentPlayer, choice1, &after);
   printf("expected handCount and last card: %i:%i, actual: %i:%i\n", before.handCount[0] + 1, estate, after.handCount[0], after.hand[0][after.handCount[0] - 1]);
-  // if(before.handCount[0] + 1 == after.handCount[0] && estate == after.hand[0][after.handCount[0] - 1]) printf("PASS\n");
-  // else printf("FAIL\n");
 
   printf("Don't Gain Coins if no Estate to Discard: ");
   printf("expected coins: %i, actual: %i\n", before.coins, after.coins);
-  // if(before.coins == after.coins) printf("PASS\n");
-  // else printf("FAIL\n");
 }

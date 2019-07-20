@@ -24,10 +24,16 @@ int main() {
   choice2 = 1;
   handPos = 0;
   ambassadorEffect(currentPlayer, choice1, choice2, &after, handPos);
-  printf("expected handCount: %i, actual: %i\n", before.handCount[currentPlayer] - 2, after.handCount[currentPlayer]);
+  printf("expected handCount: %i, actual: %i\n",
+    before.handCount[currentPlayer] - 2,
+    after.handCount[currentPlayer]);
 
   printf("Other Player Gains One of Revealed Card: ");
-  printf("expected handCount and Last Card: %i:%i, actual: %i:%i\n", before.handCount[currentPlayer + 1] + 1, minion, after.handCount[currentPlayer + 1], after.hand[currentPlayer + 1][after.handCount[currentPlayer + 1] - 1]);
+  printf("expected handCount and Last Card: %i:%i, actual: %i:%i\n",
+    before.handCount[currentPlayer + 1] + 1,
+    minion,
+    after.handCount[currentPlayer + 1],
+    after.hand[currentPlayer + 1][after.handCount[currentPlayer + 1] - 1]);
 
   printf("Current Player Tries to Discard Too Much: ");
   memset(&before, 23, sizeof(struct gameState));
