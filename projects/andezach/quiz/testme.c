@@ -5,13 +5,11 @@
 
 char inputChar()
 {
-    // 32-126, 95
     return rand() % 128;
 }
 
 char *inputString()
 {
-    // 97-122, 26
     int i;
     int length = 5;
     char *str = (char *) malloc(length + 1);
