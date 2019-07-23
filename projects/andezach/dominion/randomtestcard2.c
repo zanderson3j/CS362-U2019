@@ -9,19 +9,32 @@
 
 int testResults(int currentPlayer, int choice1, int choice2, struct gameState *before, struct gameState *after, int handPos, int result) {
   if (result == 0) {
+    int i = 0;
 
     if (before->numActions + 1 != after->numActions) return 1;
+
+    for (i = 0; i < before->handCount[currentPlayer]; ++i) {
+      if (before->hand[currentPlayer][i] == minion) break;
+    }
+
+    if (i > before->handCount[currentPlayer]) return 1;
 
     if (choice1 == choice2 || (choice1 < 0 || choice1 > 1) || (choice2 < 0 || choice2 > 1)) {
       return 1;
     } else if (choice1 == 1) {
       if (before->coins + 2 != after->coins) return 1;
+      for (i = 0; i < before->numPlayers; ++i) {
+        if (before->coins != after->coins) return 1;
+      }
     } else {
-      for (int i = 0; i < before->numPlayers; ++i) {
+      for (i = 0; i < before->numPlayers; ++i) {
         if (i == currentPlayer || before->handCount[i] > 4) {
           if (after->handCount[i] != 4) return 1;
+        } else if (before->handCount[i] != after->handCount[i]) {
+          return 1;
         }
       }
+      if (before->coins != after->coins) return 1;
     }
 
   } else {

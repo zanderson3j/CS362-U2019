@@ -10,11 +10,17 @@
 int testResults(int currentPlayer, int choice1, struct gameState *before, struct gameState *after, int result) {
 
   if (result == 0) {
+    int i = 0;
 
     if (before->numBuys + 1 != after->numBuys) return 1;
 
+    for (i = 0; i < before->handCount[currentPlayer]; ++i) {
+      if (before->hand[currentPlayer][i] == baron) break;
+    }
+
+    if (i > before->handCount[currentPlayer]) return 1;
+
     if (choice1 == 1) {
-      int i = 0;
       for (i = 0; i < before->handCount[currentPlayer]; ++i) {
         if (before->hand[currentPlayer][i] == estate) {
           if (before->coins + 4 != after->coins) {
