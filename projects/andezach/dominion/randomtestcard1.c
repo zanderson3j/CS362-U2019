@@ -11,9 +11,7 @@ int testResults(int currentPlayer, int choice1, struct gameState *before, struct
 
   if (result == 0) {
 
-    if (before->numBuys + 1 != after->numBuys) {
-      return 1;
-    }
+    if (before->numBuys + 1 != after->numBuys) return 1;
 
     if (choice1 == 1) {
       int i = 0;
