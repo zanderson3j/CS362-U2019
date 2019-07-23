@@ -35,7 +35,7 @@ int testResults(int currentPlayer, int choice1, struct gameState *before, struct
       }
 
       if (i > before->handCount[currentPlayer]) {
-        if (supplyCount(estate, &before) > 0) {
+        if (supplyCount(estate, before) > 0) {
           if (before->handCount[0] + 1 != after->handCount[0] || estate != after->hand[0][after->handCount[0] - 1]) {
             return 1;
           }
@@ -46,7 +46,7 @@ int testResults(int currentPlayer, int choice1, struct gameState *before, struct
       }
 
     } else {
-      if (supplyCount(estate, &before) > 0) {
+      if (supplyCount(estate, before) > 0) {
         if (before->handCount[0] + 1 != after->handCount[0] || estate != after->hand[0][after->handCount[0] - 1]) {
           return 1;
         }

@@ -9,8 +9,9 @@
 
 int testResults(int currentPlayer, int nextPlayer, struct gameState *before, struct gameState *after, int *tributeRevealedCards, int result) {
   if (result == 0) {
-    
+
   }
+  return 0;
 }
 
 int main() {
@@ -39,8 +40,8 @@ int main() {
     memset(&before, 23, sizeof(struct gameState));
     initializeGame(2, k, rand(), &before);
     memcpy(&after, &before, sizeof(struct gameState));
-    result = tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
-    failed += testResults(currentPlayer, nextPlayer, &before, &after, tributeRevealedCards, result);
+    // result = tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
+    // failed += testResults(currentPlayer, nextPlayer, &before, &after, tributeRevealedCards, result);
   }
 
   return 0;

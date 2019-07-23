@@ -40,6 +40,7 @@ int testResults(int currentPlayer, int choice1, int choice2, struct gameState *b
   } else {
     return 1;
   }
+  return 0;
 }
 
 int main() {

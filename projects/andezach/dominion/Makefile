@@ -24,7 +24,7 @@ testAll: dominion.o testSuite.c
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-runtests: testDrawCard 
+runtests: testDrawCard
 	./testDrawCard &> unittestresult.out
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
@@ -33,7 +33,31 @@ runtests: testDrawCard
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player 
+randomtestresults: randomtestcard1.c randomtestcard2.c randomtestcard3.c dominion.o rngs.o
+
+	echo "---Baron Tests---" > randomtestresults.out
+	echo >> randomtestresults.out
+	gcc -o randomtestcard1 randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+	./randomtestcard1 >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcov dominion.c -b -f | grep -A 5 baronEffect >> randomtestresults.out
+	echo >> randomtestresults.out
+
+	echo "---Minon Tests---" >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcc -o randomtestcard2 randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+	./randomtestcard2 >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcov dominion.c -b -f | grep -A 5 minionEffect >> randomtestresults.out
+	echo >> randomtestresults.out
+
+	echo "---Tribute Tests---" >> randomtestresults.out
+	gcc -o randomtestcard3 randomtestcard3.c dominion.o rngs.o $(CFLAGS)
+	./randomtestcard3 >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcov dominion.c -b -f | grep -A 5 tributeEffect >> randomtestresults.out
+
+all: playdom player
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
