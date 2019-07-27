@@ -9,7 +9,23 @@
 
 int testResults(int currentPlayer, int nextPlayer, struct gameState *before, struct gameState *after, int *tributeRevealedCards, int result) {
   if (result == 0) {
-
+    if ((before->discardCount[nextPlayer] + before->deckCount[nextPlayer]) <= 1) {
+      if (before->deckCount[nextPlayer] > 0) {
+        if(tributeRevealedCards[0] != before->deck[nextPlayer][before->deckCount[nextPlayer]-1]) {
+          return 1;
+        }
+        if(before->deckCount - 1 != after->deckCount) {
+          return 1;
+        }
+      } else if (before->discardCount[nextPlayer] > 0) {
+        if(tributeRevealedCards[0] != before->discard[nextPlayer][state->discardCount[nextPlayer]-1]) {
+          return 1;
+        }
+        if(before->discardCount - 1 != after->discardCount) {
+          return 1;
+        }
+      }
+    }
   }
   return 0;
 }
@@ -17,8 +33,8 @@ int testResults(int currentPlayer, int nextPlayer, struct gameState *before, str
 int main() {
 
   const int numOfTests = 2000;
-  int currentPlayer;
-  int nextPlayer;
+  int currentPlayer = 0;
+  int nextPlayer = 1;
   int tributeRevealedCards[2];
   int result;
   int failed = 0;
@@ -28,15 +44,6 @@ int main() {
   srand(time(0));
 
   for (int i = 0; i < numOfTests; ++i) {
-    currentPlayer = rand() % 2; //2 players
-    if (currentPlayer == 0) {
-      nextPlayer = 1;
-    } else {
-      nextPlayer = 0;
-    }
-    for (int i = 0; i < 2; ++i) {
-      tributeRevealedCards[i] = rand() % 28;
-    }
     memset(&before, 23, sizeof(struct gameState));
     initializeGame(2, k, rand(), &before);
     memcpy(&after, &before, sizeof(struct gameState));
