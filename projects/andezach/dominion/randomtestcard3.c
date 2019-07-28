@@ -95,8 +95,8 @@ int main() {
   for (int i = 0; i < numOfTests; ++i) {
     memset(&before, 23, sizeof(struct gameState));
     initializeGame(2, k, rand(), &before);
-    before.discardCount[nextPlayer] = rand() % 5;
-    before.deckCount[nextPlayer] = rand() % 5;
+    before.discardCount[nextPlayer] = rand() % 6;
+    before.deckCount[nextPlayer] = rand() % 6;
     for (int j = 0; j < before.discardCount[nextPlayer]; ++j) {
       before.discard[nextPlayer][j] = rand() % 27;
     }
