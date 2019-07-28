@@ -94,6 +94,9 @@ int main() {
     choice1 = rand() % 2;
     memset(&before, 23, sizeof(struct gameState));
     initializeGame(2, k, rand(), &before);
+    if (rand() % 100 == 1) {
+      before.supplyCount[estate] = 0;
+    }
     memcpy(&after, &before, sizeof(struct gameState));
     result = baronEffect(currentPlayer, choice1, &after);
     failed += testResults(currentPlayer, choice1, &before, &after, result);
