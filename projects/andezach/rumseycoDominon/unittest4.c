@@ -19,7 +19,7 @@ int main() {
   initializeGame(numPlayer, k, seed, &before);
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 3] = estate;
   memcpy(&after, &before, sizeof(struct gameState));
-  tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
+  playTribute(&after, NULL, currentPlayer, nextPlayer);
   printf("expected handCount and top card: %i:%i, actual: %i:%i\n",
     before.deckCount[nextPlayer] - 2,
     estate, after.deckCount[nextPlayer],
@@ -31,7 +31,7 @@ int main() {
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 1] = minion;
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 2] = copper;
   memcpy(&after, &before, sizeof(struct gameState));
-  tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
+  playTribute(&after, NULL, currentPlayer, nextPlayer);
   printf("expected actions: %i, actual: %i\n", before.numActions + 2, after.numActions);
 
   printf("Treasure Card Adds 2 Coins to Player: ");
@@ -43,7 +43,7 @@ int main() {
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 1] = province;
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 2] = copper;
   memcpy(&after, &before, sizeof(struct gameState));
-  tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
+  playTribute(&after, NULL, currentPlayer, nextPlayer);
   printf("expected handCount: %i, actual: %i\n",
     before.handCount[currentPlayer] + 2,
     after.handCount[currentPlayer]);
@@ -54,6 +54,6 @@ int main() {
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 1] = copper;
   before.deck[nextPlayer][before.deckCount[nextPlayer] - 2] = copper;
   memcpy(&after, &before, sizeof(struct gameState));
-  tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
+  playTribute(&after, NULL, currentPlayer, nextPlayer);
   printf("expected coins: %i, actual: %i\n", before.coins + 2, after.coins);
 }

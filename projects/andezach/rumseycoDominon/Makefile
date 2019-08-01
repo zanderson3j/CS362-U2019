@@ -24,34 +24,121 @@ testAll: dominion.o testSuite.c
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-runtests: testDrawCard 
+runtests: testDrawCard
 	./testDrawCard &> unittestresult.out
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
-randomtestresults: randomtestcard1.c randomtestcard2.c randomtestcard3.c dominion.o rngs.o
-	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
-	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
-	gcc -o randomtestcard3 -g randomtestcard3.c dominion.o rngs.o $(CFLAGS)
-	echo "Result for running randomtestcard1:" > randomtestresults.out
-	echo "randomtestcard1.c:" >> randomtestresults.out
-	randomtestcard1 >> randomtestresults.out
-	echo "Result for running randomtestcard2:" >> randomtestresults.out
-	echo "randomtestcard2.c:" >> randomtestresults.out
-	randomtestcard2 >> randomtestresults.out
-	echo "Result for running randomtestcard3:" >> randomtestresults.out
-	echo "randomtestcard3.c:" >> randomtestresults.out
-	randomtestcard3 >> randomtestresults.out
-	gcov dominion.c -b -f >> randomtestresults.out
-	cat dominion.c.gcov >> randomtestresults.out
+unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c cardtest5.c dominion.o rngs.o
 
-baronrandomtestresults: dominion.c dominion.h rngs.c rngs.h randomtestcard1.c
-	gcc -o baronRandomTest.exe dominion.c dominion.h rngs.c rngs.h randomtestcard1.c -lm -std=c99
+	echo "Result for running Baron tests (unittest1.c):" > unittestresults.out
+	echo >> unittestresults.out
+	gcc -o unittest1 unittest1.c dominion.o rngs.o $(CFLAGS)
+	./unittest1 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 playBaron >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running Minion tests (unittest2.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o unittest2 unittest2.c dominion.o rngs.o $(CFLAGS)
+	./unittest2 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 playMinion >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running Ambassador tests (unittest3.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o unittest3 unittest3.c dominion.o rngs.o $(CFLAGS)
+	./unittest3 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 playAmbassador >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running Tribute tests (unittest4.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o unittest4 unittest4.c dominion.o rngs.o $(CFLAGS)
+	./unittest4 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 playTribute >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running Mine tests (unittest5.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o unittest5 unittest5.c dominion.o rngs.o $(CFLAGS)
+	./unittest5 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 playMine >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running initializeGame tests (cardtest1.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o cardtest1 cardtest1.c dominion.o rngs.o $(CFLAGS)
+	./cardtest1 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 initializeGame >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running shuffle tests (cardtest2.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o cardtest2 cardtest2.c dominion.o rngs.o $(CFLAGS)
+	./cardtest2 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 shuffle >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running endTurn tests (cardtest3.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o cardtest3 cardtest3.c dominion.o rngs.o $(CFLAGS)
+	./cardtest3 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 endTurn >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running getWinners tests (cardtest4.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o cardtest4 cardtest4.c dominion.o rngs.o $(CFLAGS)
+	./cardtest4 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 getWinners >> unittestresults.out
+	echo >> unittestresults.out
+
+	echo "Result for running drawCard tests (cardtest5.c):" >> unittestresults.out
+	echo >> unittestresults.out
+	gcc -o cardtest5 cardtest5.c dominion.o rngs.o $(CFLAGS)
+	./cardtest5 >> unittestresults.out
+	echo >> unittestresults.out
+	gcov dominion.c -b -f | grep -A 5 "Function 'drawCard'" >> unittestresults.out
+	echo >> unittestresults.out
+
+randomtestresults: randomtestcard1.c randomtestcard2.c randomtestcard3.c dominion.o rngs.o
+
+	echo "---Baron Tests---" > randomtestresults.out
+	echo >> randomtestresults.out
+	gcc -o randomtestcard1 randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+	./randomtestcard1 >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcov dominion.c -b -f | grep -A 5 playBaron >> randomtestresults.out
+	echo >> randomtestresults.out
+
+	echo "---Minon Tests---" >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcc -o randomtestcard2 randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+	./randomtestcard2 >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcov dominion.c -b -f | grep -A 5 playMinion >> randomtestresults.out
+	echo >> randomtestresults.out
+
+	echo "---Tribute Tests---" >> randomtestresults.out
+	gcc -o randomtestcard3 randomtestcard3.c dominion.o rngs.o $(CFLAGS)
+	./randomtestcard3 >> randomtestresults.out
+	echo >> randomtestresults.out
+	gcov dominion.c -b -f | grep -A 5 playTribute >> randomtestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player 
+all: playdom player
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe

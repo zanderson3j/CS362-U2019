@@ -23,7 +23,7 @@ int main() {
   memcpy(&after, &before, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 0;
-  minionEffect(currentPlayer, choice1, choice2, &after, 0);
+  playMinion(choice1, &after, 0, currentPlayer);
   printf("expected coins: %i, actual: %i\n", before.coins + 2, after.coins);
 
   //Test the number of actions increases by one.
@@ -38,7 +38,7 @@ int main() {
   memcpy(&after, &before, sizeof(struct gameState));
   choice1 = 0;
   choice2 = 1;
-  minionEffect(currentPlayer, choice1, choice2, &after, 0);
+  playMinion(choice1, &after, 0, currentPlayer);
   printf("expected hand count: 4, actual: %i\n", after.handCount[currentPlayer]);
 
   //Test other player less than 5 cards in hand doesnt draw any.
@@ -56,7 +56,7 @@ int main() {
   memcpy(&after, &before, sizeof(struct gameState));
   choice1 = 0;
   choice2 = 1;
-  minionEffect(currentPlayer, choice1, choice2, &after, 0);
+  playMinion(choice1, &after, 0, currentPlayer);
   printf("expected hand count: 4, actual: %i\n", after.handCount[currentPlayer + 1]);
 
   //Test making two choices is illegal
@@ -67,7 +67,7 @@ int main() {
   memcpy(&after, &before, sizeof(struct gameState));
   choice1 = 1;
   choice2 = 1;
-  result = minionEffect(currentPlayer, choice1, choice2, &after, 0);
+  result = playMinion(choice1, &after, 0, currentPlayer);
   printf("expected result: -1, actual: %i\n", result);
 
 }

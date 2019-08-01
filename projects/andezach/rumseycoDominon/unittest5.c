@@ -22,7 +22,7 @@ int main() {
   choice1 = silver;
   choice2 = 1;
   handPos = 0;
-  mineEffect(currentPlayer, choice1, choice2, &after, handPos);
+  playMine(&after, handPos, currentPlayer, choice1, choice2);
   printf("expected card in back of hand: %i, actual: %i\n",
     silver,
     after.hand[currentPlayer][after.handCount[currentPlayer] - 1]);
@@ -36,6 +36,6 @@ int main() {
   choice1 = gold;
   choice2 = 1;
   handPos = 0;
-  result = mineEffect(currentPlayer, choice1, choice2, &after, handPos);
+  result = playMine(&after, handPos, currentPlayer, choice1, choice2);
   printf("expected result: -1, actual: %i\n", result);
 }

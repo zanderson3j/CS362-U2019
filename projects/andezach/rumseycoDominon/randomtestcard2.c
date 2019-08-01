@@ -81,7 +81,7 @@ int main() {
     memset(&before, 23, sizeof(struct gameState));
     initializeGame(2, k, rand(), &before);
     memcpy(&after, &before, sizeof(struct gameState));
-    result = minionEffect(currentPlayer, choice1, choice2, &after, handPos);
+    result = playMinion(choice1, &after, 0, currentPlayer);
     failed += testResults(currentPlayer, choice1, choice2, &before, &after, handPos, result);
   }
 

@@ -20,7 +20,7 @@ int main() {
   before.hand[currentPlayer][0] = estate; //put estate card in hand
   memcpy(&after, &before, sizeof(struct gameState));
   choice1 = 1;
-  baronEffect(currentPlayer, choice1, &after);
+  playBaron(choice1, &after, currentPlayer);
   printf("expected coins: %i, actual: %i\n", before.coins + 4, after.coins);
 
   //Test the number of buys increases by one.
@@ -33,7 +33,7 @@ int main() {
   initializeGame(numPlayer, k, seed, &before);
   memcpy(&after, &before, sizeof(struct gameState));
   choice1 = 0;
-  baronEffect(currentPlayer, choice1, &after);
+  playBaron(choice1, &after, currentPlayer);
   printf("expected handCount and last card: %i:%i, actual: %i:%i\n", before.handCount[0] + 1, estate, after.handCount[0], after.hand[0][after.handCount[0] - 1]);
 
   //Test not having an estate to discard results in picking one up.
@@ -45,7 +45,7 @@ int main() {
   }
   memcpy(&after, &before, sizeof(struct gameState));
   choice1 = 1;
-  baronEffect(currentPlayer, choice1, &after);
+  playBaron(choice1, &after, currentPlayer);
   printf("expected handCount and last card: %i:%i, actual: %i:%i\n", before.handCount[0] + 1, estate, after.handCount[0], after.hand[0][after.handCount[0] - 1]);
 
   printf("Don't Gain Coins if no Estate to Discard: ");

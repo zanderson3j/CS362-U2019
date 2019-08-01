@@ -98,7 +98,7 @@ int main() {
       before.supplyCount[estate] = 0;
     }
     memcpy(&after, &before, sizeof(struct gameState));
-    result = baronEffect(currentPlayer, choice1, &after);
+    result = playBaron(choice1, &after, currentPlayer);
     failed += testResults(currentPlayer, choice1, &before, &after, result);
   }
 

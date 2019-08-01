@@ -104,7 +104,7 @@ int main() {
       before.deck[nextPlayer][j] = rand() % 27;
     }
     memcpy(&after, &before, sizeof(struct gameState));
-    result = tributeEffect(currentPlayer, nextPlayer, &after, tributeRevealedCards);
+    result = playTribute(&after, NULL, currentPlayer, nextPlayer);
     failed += testResults(currentPlayer, nextPlayer, &before, &after, tributeRevealedCards, result);
   }
 

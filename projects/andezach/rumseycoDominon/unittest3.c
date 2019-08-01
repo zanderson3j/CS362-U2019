@@ -23,7 +23,7 @@ int main() {
   choice1 = 1;
   choice2 = 1;
   handPos = 0;
-  ambassadorEffect(currentPlayer, choice1, choice2, &after, handPos);
+  playAmbassador(&after, choice1, handPos, currentPlayer);
   printf("expected handCount: %i, actual: %i\n",
     before.handCount[currentPlayer] - 2,
     after.handCount[currentPlayer]);
@@ -43,7 +43,7 @@ int main() {
   choice1 = 1;
   choice2 = 3;
   handPos = 0;
-  result = ambassadorEffect(currentPlayer, choice1, choice2, &after, handPos);
+  result = playAmbassador(&after, choice1, handPos, currentPlayer);
   printf("expected result: -1, actual: %i\n", result);
 
   printf("Current Player Tries to Discard Too Little: ");
@@ -54,7 +54,7 @@ int main() {
   choice1 = 1;
   choice2 = -1;
   handPos = 0;
-  result = ambassadorEffect(currentPlayer, choice1, choice2, &after, handPos);
+  result = playAmbassador(&after, choice1, handPos, currentPlayer);
   printf("expected result: -1, actual: %i\n", result);
 
   printf("Current Player Tries to Use Played Card as Revealed Card: ");
@@ -65,6 +65,6 @@ int main() {
   choice1 = 0;
   choice2 = 1;
   handPos = 0;
-  result = ambassadorEffect(currentPlayer, choice1, choice2, &after, handPos);
+  result = playAmbassador(&after, choice1, handPos, currentPlayer);
   printf("expected result: -1, actual: %i\n", result);
 }
