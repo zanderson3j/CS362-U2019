@@ -33,7 +33,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 
 	echo "Result for running Baron tests (unittest1.c):" > unittestresults.out
 	echo >> unittestresults.out
-	gcc -o unittest1 unittest1.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest1 -g unittest1.c dominion.o rngs.o $(CFLAGS)
 	./unittest1 >> unittestresults.out
 	echo >> unittestresults.out
 	gcov dominion.c -b -f | grep -A 5 playBaron >> unittestresults.out
@@ -41,7 +41,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 
 	echo "Result for running Minion tests (unittest2.c):" >> unittestresults.out
 	echo >> unittestresults.out
-	gcc -o unittest2 unittest2.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest2 -g unittest2.c dominion.o rngs.o $(CFLAGS)
 	./unittest2 >> unittestresults.out
 	echo >> unittestresults.out
 	gcov dominion.c -b -f | grep -A 5 playMinion >> unittestresults.out
@@ -49,7 +49,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 
 	echo "Result for running Ambassador tests (unittest3.c):" >> unittestresults.out
 	echo >> unittestresults.out
-	gcc -o unittest3 unittest3.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest3 -g unittest3.c dominion.o rngs.o $(CFLAGS)
 	./unittest3 >> unittestresults.out
 	echo >> unittestresults.out
 	gcov dominion.c -b -f | grep -A 5 playAmbassador >> unittestresults.out
@@ -57,7 +57,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 
 	echo "Result for running Tribute tests (unittest4.c):" >> unittestresults.out
 	echo >> unittestresults.out
-	gcc -o unittest4 unittest4.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest4 -g unittest4.c dominion.o rngs.o $(CFLAGS)
 	./unittest4 >> unittestresults.out
 	echo >> unittestresults.out
 	gcov dominion.c -b -f | grep -A 5 playTribute >> unittestresults.out
