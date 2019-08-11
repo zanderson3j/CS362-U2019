@@ -83,7 +83,7 @@ public class UrlValidatorTest extends TestCase {
 
   }
 
-  public void testNoFragmentsOption() {
+  public void testAllowAllSchemesOption() {
     UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
 
     testUrls.forEach(it -> assertEquals("For allow all schemes option, " + it.get(0) + " is " + it.get(4) + ".",
