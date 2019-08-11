@@ -3,6 +3,9 @@ import java.util.Random;
 
 public class UrlValidatorRandomTest extends TestCase {
 
+    public int randomURLCount = 200;
+    ResultPair[] randomTestURLs = new ResultPair[randomURLCount];
+
     ResultPair[] urlStart = {new ResultPair("http://www.", true),
             new ResultPair("https://www.", true),
             new ResultPair("httpd://www.", false),
@@ -51,9 +54,6 @@ public class UrlValidatorRandomTest extends TestCase {
             new ResultPair(".badFileExtension", false)};
 
 
-    public int randomURLCount = 200;
-    ResultPair[] randomTestURLs = new ResultPair[randomURLCount];
-
 
     protected void setupRandomTestURLs() {
         int urlStartIndex;
@@ -66,8 +66,7 @@ public class UrlValidatorRandomTest extends TestCase {
         for (int i = 0; i<randomURLCount; i++) {
 
             // preset the test url to blank and true
-            randomTestURLs[i].item = "";
-            randomTestURLs[i].valid = true;
+            randomTestURLs[i] = new ResultPair("", true);
 
             // url start will be randomly selected
             urlStartIndex = (int)(Math.random()*(urlStart.length));
