@@ -22,8 +22,8 @@ http://www.yandex.ru,true,true,true,true
 http://www.hao123.com,true,true,true,true
 http://www.google.co.uk,true,true,true,true
 http://www.reddit.com,true,true,true,true
-http://www.ebay.com,true,true,true,true
-http://www.google.fr,true,true,true,true
+http://www.ebay.com/slashy,true,true,true,true
+http://www.ebay.com//slashy,false,true,false,false
 http://www.t.co,true,true,true,true
 http://www.tmall.com,true,true,true,true
 http://www.google.com.br,true,true,true,true
