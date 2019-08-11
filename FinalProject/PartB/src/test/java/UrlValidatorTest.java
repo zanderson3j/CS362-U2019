@@ -84,9 +84,9 @@ public class UrlValidatorTest extends TestCase {
   }
 
   public void testNoFragmentsOption() {
-    UrlValidator validator = new UrlValidator(UrlValidator.NO_FRAGMENTS);
+    UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
 
-    testUrls.forEach(it -> assertEquals("For no fragments option, " + it.get(0) + " is " + it.get(4) + ".",
+    testUrls.forEach(it -> assertEquals("For allow all schemes option, " + it.get(0) + " is " + it.get(4) + ".",
             Boolean.parseBoolean(it.get(4)),
             validator.isValid(it.get(0))));
 
