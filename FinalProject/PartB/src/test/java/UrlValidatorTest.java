@@ -77,7 +77,7 @@ public class UrlValidatorTest extends TestCase {
   public void testAllowLocalUrlOption() {
     UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
 
-    testUrls.forEach(it -> assertEquals("For allow local urls option, " + it.get(0) + " is " + it.get(1) + ".",
+    testUrls.forEach(it -> assertEquals("For allow local urls option, " + it.get(0) + " is " + it.get(3) + ".",
             Boolean.parseBoolean(it.get(3)),
             validator.isValid(it.get(0))));
 
