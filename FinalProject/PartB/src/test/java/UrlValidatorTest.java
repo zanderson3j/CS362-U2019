@@ -57,6 +57,41 @@ public class UrlValidatorTest extends TestCase {
       }
    }
 
+   public void testDefault() {
+     UrlValidator validator = new UrlValidator();
+
+     testUrls.forEach(it -> assertEquals("For default option, " + it.get(0) + " is " + it.get(1) + ".",
+                     Boolean.parseBoolean(it.get(1)),
+                     validator.isValid(it.get(0))));
+   }
+
+  public void testAllow2SlashesOption() {
+    UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_2_SLASHES);
+
+    testUrls.forEach(it -> assertEquals("For allow 2 slashes option, " + it.get(0) + " is " + it.get(2) + ".",
+            Boolean.parseBoolean(it.get(2)),
+            validator.isValid(it.get(0))));
+
+  }
+
+  public void testAllowLocalUrlOption() {
+    UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
+
+    testUrls.forEach(it -> assertEquals("For allow local urls option, " + it.get(0) + " is " + it.get(1) + ".",
+            Boolean.parseBoolean(it.get(3)),
+            validator.isValid(it.get(0))));
+
+  }
+
+  public void testNoFragmentsOption() {
+    UrlValidator validator = new UrlValidator(UrlValidator.NO_FRAGMENTS);
+
+    testUrls.forEach(it -> assertEquals("For no fragments option, " + it.get(0) + " is " + it.get(4) + ".",
+            Boolean.parseBoolean(it.get(4)),
+            validator.isValid(it.get(0))));
+
+  }
+
    public void testIsValid() {
         testIsValid(testUrlParts, UrlValidator.ALLOW_ALL_SCHEMES);
         setUp();

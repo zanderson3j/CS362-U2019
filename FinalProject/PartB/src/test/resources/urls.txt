@@ -1,1 +1,2 @@
-http://www.google.com,true
+http://www.google.com,true,true,true,true
+http://www.google.com/,true,true,true,true
