@@ -35,7 +35,7 @@ http://www.netflix.com,true,true,true,true
 ://www.google.it,false,false,false,false
 http://example.com/serach?address=Main Avenue,false,false,false,false
 http://example.com/serach?address=Main%20Avenue,true,true,true,true
-http://www.google.es,true,true,true,true
+http://MVSXX.COMPANY.COM:04445/CICSPLEXSM//JSMITH/MENU/OURHOME?CONTEXT=FRED&SCOPE=FRED,false,true,false,false
 http://www.wordpress.com,true,true,true,true
 http://www.gmw.cn,true,true,true,true
 http://www.tumblr.com,true,true,true,true
@@ -89,7 +89,7 @@ https://www.bbc.co.uk,true,true,true,true
 https://www.wikia.com,true,true,true,true
 https://www.google.co.th,true,true,true,true
 http://localhost/test/index.html,false,false,true,false
-https://www.google.com.ph,true,true,true,true
+something://localhost/test/index.html,false,false,false,false
 http://machinename/test/index.html,false,false,true,false
 http://www.apache.org/test/index.html,true,true,true,true
 lmnop://www.accuweather.com,false,false,false,true
