@@ -8,8 +8,8 @@ public class UrlValidatorRandomTest extends TestCase {
 
     ResultPair[] urlStart = {new ResultPair("http://www.", true),
             new ResultPair("https://www.", true),
-            new ResultPair("httpd://www.", false),
-            new ResultPair("htttp://www.", false)};
+            new ResultPair("httpd://www.", true),
+            new ResultPair("htttp://www.", true)};
 
     ResultPair[] urlMiddle = {new ResultPair("a", true),
             new ResultPair("b", true),
@@ -45,13 +45,13 @@ public class UrlValidatorRandomTest extends TestCase {
 
     ResultPair[] urlFilePathStart = {new ResultPair("a/a", true),
             new ResultPair("b/b", true),
-            new ResultPair("a//a", true),
+            new ResultPair("a//a", false),
             new ResultPair("///", false),
-            new ResultPair("...", false)};
+            new ResultPair("...", true)};
 
     ResultPair[] urlFilePathEnd = {new ResultPair(".html", true),
             new ResultPair(".pdf", true),
-            new ResultPair(".badFileExtension", false)};
+            new ResultPair(".badFileExtension", true)};
 
 
 
@@ -100,7 +100,7 @@ public class UrlValidatorRandomTest extends TestCase {
     }
 
     public void testIsValidRandom() {
-        UrlValidator urlVal = new UrlValidator();
+        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
         setupRandomTestURLs();
         boolean expected;
         boolean result;
