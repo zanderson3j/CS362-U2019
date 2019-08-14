@@ -329,10 +329,6 @@ public class UrlValidator implements Serializable {
             return false;
         }
 
-        if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
-            return false;
-        }
-
         if (!isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT))) {
             return false;
         }
@@ -460,7 +456,7 @@ public class UrlValidator implements Serializable {
         }
         
         int slash2Count = countToken("//", path);
-        if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
+        if (slash2Count > 0) {
             return false;
         }
 
