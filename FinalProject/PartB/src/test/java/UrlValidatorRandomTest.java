@@ -51,7 +51,7 @@ public class UrlValidatorRandomTest extends TestCase {
 
     ResultPair[] urlFilePathEnd = {new ResultPair(".html", true),
             new ResultPair(".pdf", true),
-            new ResultPair(".badFileExtension: ", true)};
+            new ResultPair(".badFileExtension: ", false)};
 
 
 

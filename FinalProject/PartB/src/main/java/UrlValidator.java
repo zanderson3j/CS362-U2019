@@ -378,7 +378,7 @@ public class UrlValidator implements Serializable {
      */
     protected boolean isValidAuthority(String authority) {
         if (authority == null) {
-            return false;
+            return true;
         }
 
         // check manual authority validation if specified
