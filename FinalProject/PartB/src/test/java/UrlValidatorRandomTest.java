@@ -9,7 +9,8 @@ public class UrlValidatorRandomTest extends TestCase {
     ResultPair[] urlStart = {new ResultPair("http://www.", true),
             new ResultPair("https://www.", true),
             new ResultPair("httpd://www.", true),
-            new ResultPair("htttp://www.", true)};
+            new ResultPair("htttp://www.", true),
+            new ResultPair("http:www.", true)};
 
     ResultPair[] urlMiddle = {new ResultPair("a", true),
             new ResultPair("b", true),
@@ -41,8 +42,7 @@ public class UrlValidatorRandomTest extends TestCase {
     ResultPair[] urlDomain = {new ResultPair(".gov/", true),
             new ResultPair(".com/", true),
             new ResultPair(".govvvv/", false),
-            new ResultPair(".commm/", false),
-            new ResultPair(".com:", true)};
+            new ResultPair(".commm/", false)};
 
     ResultPair[] urlFilePathStart = {new ResultPair("a/a", true),
             new ResultPair("b/b", true),

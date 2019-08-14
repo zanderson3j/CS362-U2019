@@ -350,9 +350,9 @@ public class UrlValidator implements Serializable {
      * @return true if valid.
      */
     protected boolean isValidScheme(String scheme) {
-        if (scheme == null) {
+       /* if (scheme == null) {
             return false;
-        }
+        }*/
 
         // TODO could be removed if external schemes were checked in the ctor before being stored
         if (!SCHEME_PATTERN.matcher(scheme).matches()) {
@@ -378,7 +378,7 @@ public class UrlValidator implements Serializable {
      */
     protected boolean isValidAuthority(String authority) {
         if (authority == null) {
-            return true;
+            return false;
         }
 
         // check manual authority validation if specified
