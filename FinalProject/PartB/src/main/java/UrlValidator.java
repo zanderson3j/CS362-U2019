@@ -306,7 +306,7 @@ public class UrlValidator implements Serializable {
         }
 
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
-        if (!isValidScheme(scheme)) {
+        if (isValidScheme(scheme)) {
             return false;
         }
 
@@ -350,9 +350,9 @@ public class UrlValidator implements Serializable {
      * @return true if valid.
      */
     protected boolean isValidScheme(String scheme) {
-       /* if (scheme == null) {
+        if (scheme == null) {
             return false;
-        }*/
+        }
 
         // TODO could be removed if external schemes were checked in the ctor before being stored
         if (!SCHEME_PATTERN.matcher(scheme).matches()) {
