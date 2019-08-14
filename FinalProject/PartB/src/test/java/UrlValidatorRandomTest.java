@@ -41,17 +41,19 @@ public class UrlValidatorRandomTest extends TestCase {
     ResultPair[] urlDomain = {new ResultPair(".gov/", true),
             new ResultPair(".com/", true),
             new ResultPair(".govvvv/", false),
-            new ResultPair(".commm/", false)};
+            new ResultPair(".commm/", false),
+            new ResultPair(".com:", true)};
 
     ResultPair[] urlFilePathStart = {new ResultPair("a/a", true),
             new ResultPair("b/b", true),
             new ResultPair("a//a", false),
             new ResultPair("///", false),
-            new ResultPair("...", true)};
+            new ResultPair("...", true),
+            new ResultPair("", true)};
 
     ResultPair[] urlFilePathEnd = {new ResultPair(".html", true),
             new ResultPair(".pdf", true),
-            new ResultPair(".badFileExtension:", false)};
+            new ResultPair("", true)};
 
 
 
