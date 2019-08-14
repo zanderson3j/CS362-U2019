@@ -17,6 +17,12 @@
 
 import junit.framework.TestCase;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Performs Validation Test for url validations.
  *
@@ -27,16 +33,64 @@ public class UrlValidatorTest extends TestCase {
    private final boolean printStatus = false;
    private final boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
 
+    private List<List<String>> testUrls = new ArrayList<>();
+
    public UrlValidatorTest(String testName) {
       super(testName);
    }
 
    @Override
-protected void setUp() {
+    protected void setUp() {
       for (int index = 0; index < testPartsIndex.length - 1; index++) {
          testPartsIndex[index] = 0;
       }
+
+      // Based on example from https://www.baeldung.com/java-csv-file-array
+      try (BufferedReader br = new BufferedReader(new FileReader(UrlValidatorTest.class.getClassLoader().getResource("urls.txt").getPath()))) {
+         String line;
+         while ((line = br.readLine()) != null) {
+             String[] values = line.split(",");
+             testUrls.add(Arrays.asList(values));
+         }
+      } catch (Exception e) {
+         System.out.println("Couldn't read in file.");
+      }
    }
+
+   public void testDefault() {
+     UrlValidator validator = new UrlValidator();
+
+     testUrls.forEach(it -> assertEquals("For default option, " + it.get(0) + " is " + it.get(1) + ".",
+                     Boolean.parseBoolean(it.get(1)),
+                     validator.isValid(it.get(0))));
+   }
+
+  public void testAllow2SlashesOption() {
+    UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_2_SLASHES);
+
+    testUrls.forEach(it -> assertEquals("For allow 2 slashes option, " + it.get(0) + " is " + it.get(2) + ".",
+            Boolean.parseBoolean(it.get(2)),
+            validator.isValid(it.get(0))));
+
+  }
+
+  public void testAllowLocalUrlOption() {
+    UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
+
+    testUrls.forEach(it -> assertEquals("For allow local urls option, " + it.get(0) + " is " + it.get(3) + ".",
+            Boolean.parseBoolean(it.get(3)),
+            validator.isValid(it.get(0))));
+
+  }
+
+  public void testAllowAllSchemesOption() {
+    UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
+
+    testUrls.forEach(it -> assertEquals("For allow all schemes option, " + it.get(0) + " is " + it.get(4) + ".",
+            Boolean.parseBoolean(it.get(4)),
+            validator.isValid(it.get(0))));
+
+  }
 
    public void testIsValid() {
         testIsValid(testUrlParts, UrlValidator.ALLOW_ALL_SCHEMES);

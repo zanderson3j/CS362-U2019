@@ -306,7 +306,7 @@ public class UrlValidator implements Serializable {
         }
 
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
-        if (!isValidScheme(scheme)) {
+        if (isValidScheme(scheme)) {
             return false;
         }
 
@@ -326,10 +326,6 @@ public class UrlValidator implements Serializable {
         }
 
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
-            return false;
-        }
-
-        if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
             return false;
         }
 
@@ -460,7 +456,7 @@ public class UrlValidator implements Serializable {
         }
         
         int slash2Count = countToken("//", path);
-        if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
+        if (slash2Count > 0) {
             return false;
         }
 
