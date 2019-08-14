@@ -10,7 +10,7 @@ public class UrlValidatorRandomTest extends TestCase {
             new ResultPair("https://www.", true),
             new ResultPair("httpd://www.", true),
             new ResultPair("htttp://www.", true),
-            new ResultPair("http:www.", true)};
+            new ResultPair("http:www.", false)};
 
     ResultPair[] urlMiddle = {new ResultPair("a", true),
             new ResultPair("b", true),
